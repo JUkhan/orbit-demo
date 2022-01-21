@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../store';
 import { asyncInc, decrement, increment } from './counterState';
 import { useOrbitEffect } from 'orbit-redux';
 export default () => {
-  useOrbitEffect([increment, decrement], (dispatch, _, action) => {
+  useOrbitEffect(decrement, (dispatch, _, action) => {
     console.log(action)
   });
   const { count, loading } = useAppSelector(state => state.counter);
