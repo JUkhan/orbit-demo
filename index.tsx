@@ -1,31 +1,16 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Hello from './Hello';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './style.css';
+import App from './app';
 
-interface AppProps { }
-interface AppState {
-  name: string;
-}
+import { Provider } from 'react-redux';
+import { store } from './features/store';
 
-class App extends Component<AppProps, AppState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: 'React'
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Hello name={this.state.name} />
-        <p>
-          Start editing to see some magic happen :)
-        </p>
-      </div>
-    );
-  }
-}
-
-render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
