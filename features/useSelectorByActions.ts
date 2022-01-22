@@ -2,7 +2,7 @@ import { ActionParam, useOrbitEffect } from 'orbit-redux';
 import { useState } from 'react';
 import { useStore } from 'react-redux';
 
-export function useSelectorForActions<S = any, TSelected = any>(
+export function useSelectorByActions<S = any, TSelected = any>(
   acions: ActionParam,
   selector: (state: S) => TSelected,
   equalityFn: (left: TSelected, right: TSelected) => boolean = (left, right) =>
