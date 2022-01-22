@@ -1,14 +1,14 @@
 import { combineReducers, orbit} from 'orbit-redux';
-import { counterSlice } from './counter/counterState';
+import { counterState } from './counter/counterState';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { todoSlice, todoFilterSlice } from './todo/todoState';
+import { todoState, todoFilterState } from './todo/todoState';
 
 export const store = createStore(
   combineReducers({
-    [counterSlice.name]: counterSlice.reducer,
-    [todoSlice.name]: todoSlice.reducer,
-    [todoFilterSlice.name]: todoFilterSlice.reducer,
+    [counterState.name]: counterState.reducer,
+    [todoState.name]: todoState.reducer,
+    [todoFilterState.name]: todoFilterState.reducer,
   }),
   applyMiddleware(orbit)
 );

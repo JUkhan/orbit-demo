@@ -1,9 +1,9 @@
-import { createReducer, PayloadAction } from 'orbit-redux';
+import { createState, PayloadAction } from 'orbit-redux';
 export interface CouterState {
   count: number;
   loading: boolean;
 }
-export const counterSlice = createReducer({
+export const counterState = createState({
   name: 'counter',
   initialState: { count: 0, loading: false },
   reducers: {
@@ -28,4 +28,4 @@ export const counterSlice = createReducer({
   },
 });
 
-export const { increment, decrement, loading, asyncInc } = counterSlice.actions;
+export const { increment, decrement, loading, asyncInc } = counterState.actions;
