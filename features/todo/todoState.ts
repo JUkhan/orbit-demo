@@ -1,9 +1,5 @@
 import { createState, PayloadAction } from 'orbit-redux';
-export interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+
 export enum TodoFilter {
   SHOW_ALL = 'SHOW_ALL',
   SHOW_COMPLETED = 'SHOW_COMPLETED',
