@@ -13,7 +13,7 @@ export const store = createStore(
   applyMiddleware(orbit)
 );
 
-type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>;
 type Dispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch: () => Dispatch = useDispatch;

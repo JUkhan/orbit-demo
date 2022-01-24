@@ -1,19 +1,23 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../store';
-import { addTodo, removeTodo, TodoFilter, toggleTodo } from './todoState';
+import {RootState, useAppDispatch } from '../store';
+import {useSelectorByActions} from '../useSelectorByActions'
+import { addTodo, removeTodo, TodoFilter, toggleTodo, setFilter } from './todoState';
 import Filter from './filterButton';
 
 function Todo() {
-  const todos = useAppSelector(state => {
-    switch (state.todoFilter) {
-      case TodoFilter.SHOW_ALL:
-        return state.todos;
-      case TodoFilter.SHOW_COMPLETED:
-        return state.todos.filter(todo => todo.completed);
-      case TodoFilter.SHOW_ACTIVE:
-        return state.todos.filter(todo => !todo.completed);
+  const todos = useSelectorByActions(
+    [setFilter, addTodo, toggleTodo, removeTodo],
+    (state: RootState) => {
+      switch (state.todoFilter) {
+        case TodoFilter.SHOW_ALL:
+          return state.todos;
+        case TodoFilter.SHOW_COMPLETED:
+          return state.todos.filter((todo) => todo.completed);
+        case TodoFilter.SHOW_ACTIVE:
+          return state.todos.filter((todo) => !todo.completed);
+      }
     }
-  });
+  );
   const dispatch = useAppDispatch();
  
   return <div>
