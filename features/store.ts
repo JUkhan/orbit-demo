@@ -1,8 +1,9 @@
-import { combineReducers, orbit} from 'orbit-redux';
+import { combineReducers, orbit, TypedUseSelectorByActionsHook} from 'orbit-redux';
 import { counterState } from './counter/counterState';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { todoState, todoFilterState } from './todo/todoState';
+import selectorByActions from './useSelectorByActions'
 
 export const store = createStore(
   combineReducers({
@@ -13,7 +14,8 @@ export const store = createStore(
   applyMiddleware(orbit)
 );
 
-export type RootState = ReturnType<typeof store.getState>;
+type RootState = ReturnType<typeof store.getState>;
 type Dispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch: () => Dispatch = useDispatch;
+export const useSelectorByActions:TypedUseSelectorByActionsHook<RootState> = selectorByActions;

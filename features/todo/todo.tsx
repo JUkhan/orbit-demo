@@ -1,13 +1,11 @@
 import React from 'react';
-import {RootState, useAppDispatch } from '../store';
-import {useSelectorByActions} from '../useSelectorByActions'
+import { useAppDispatch, useSelectorByActions } from '../store';
 import { addTodo, removeTodo, TodoFilter, toggleTodo, setFilter } from './todoState';
 import Filter from './filterButton';
 
 function Todo() {
   const todos = useSelectorByActions(
-    [setFilter, addTodo, toggleTodo, removeTodo],
-    (state: RootState) => {
+    [setFilter, addTodo, toggleTodo, removeTodo], (state) => {
       switch (state.todoFilter) {
         case TodoFilter.SHOW_ALL:
           return state.todos;
