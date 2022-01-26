@@ -2,6 +2,8 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../store';
 import { asyncInc, decrement, increment } from './counterState';
 import { useOrbitEffect } from 'orbit-redux';
+import '../effects';
+
 export default () => {
   useOrbitEffect(decrement, (dispatch, _, action) => {
     console.log(action)
