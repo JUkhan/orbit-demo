@@ -1,6 +1,6 @@
-import { createState, PayloadAction } from 'orbit-redux';
+import { createSlice, PayloadAction } from 'orbit-redux';
 
-export const counterState = createState({
+export const counterState = createSlice({
   name: 'counter',
   initialState: { count: 0, loading: false },
   reducers: {

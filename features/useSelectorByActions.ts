@@ -12,13 +12,11 @@ export default function useSelectorByActions<S = any, TSelected = any>(
   const [selectedState, setState] = useState(selector(store.getState()));
   let oldState = selectedState;
   useOrbitEffect(acions, () => {
-    setTimeout(() => {
       const newState = selector(store.getState());
       if (!equalityFn(newState, oldState)) {
         setState(newState);
         oldState = newState;
       }
-    }, 0);
   });
 
   return selectedState;
