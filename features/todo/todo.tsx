@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppDispatch, useSelectorByActions } from '../store';
+import { useSelectorByActions } from '../store';
 import { addTodo, removeTodo, TodoFilter, toggleTodo, setFilter } from './todoState';
 import Filter from './filterButton';
 
@@ -16,18 +16,17 @@ function Todo() {
       }
     }
   );
-  const dispatch = useAppDispatch();
- 
+
   return <div>
     <h1>Todos</h1>
     <Filter show={TodoFilter.SHOW_ACTIVE}/>
     <Filter show={TodoFilter.SHOW_COMPLETED}/>
     <Filter show={TodoFilter.SHOW_ALL}/>
-    <button onClick={() => dispatch(addTodo(`todo-${todos.length + 1}`))}>add</button>
+    <button onClick={() => addTodo(`todo-${todos.length + 1}`)}>add</button>
     <ul>
       {todos.map(todo => <li key={todo.id}>{todo.text} - {todo.completed ? 'compleed' : 'active'}
-        <button onClick={() => dispatch(toggleTodo(todo.id))}>toggle</button>
-        <button onClick={() => dispatch(removeTodo(todo.id))}>remove</button>
+        <button onClick={() => toggleTodo(todo.id)}>toggle</button>
+        <button onClick={() => removeTodo(todo.id)}>remove</button>
       </li>)}
     </ul>
   </div>

@@ -1,15 +1,14 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../store';
+import {  useAppSelector } from '../store';
 import { setFilter, TodoFilter} from './todoState';
 
 
 export default ({show}:{show:TodoFilter}) =>{
   const filter=useAppSelector(state=>state.todoFilter);
-  const dispatch = useAppDispatch();
-  
+
   return <button 
       className={activeClass(filter, show)} 
-      onClick={() => dispatch(setFilter(show))}>
+      onClick={() => setFilter(show)}>
         {show}
     </button>
 }

@@ -16,10 +16,10 @@ export const counterState = createSlice({
   },
 
   effects: {
-    async asyncInc(dispatch) {
-      dispatch(loading());
+    async asyncInc(action) {
+      loading();
       await new Promise((resolve) =>
-        setTimeout(() => dispatch(increment(20)), 1000)
+        setTimeout(() => increment(20), 1000)
       );
     },
   },
