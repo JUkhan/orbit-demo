@@ -10,9 +10,7 @@ export const todoState = createSlice({
   name: 'todos',
   initialState: [{ id: 1, text: 'Learn FP', completed: false }],
   reducers: {
-    init(state){
-       return [...state,{id: 2, text: 'COOL', completed: true}]
-    },
+    
     addTodo(state, action: PayloadAction<string>) {
       return [
         ...state,
