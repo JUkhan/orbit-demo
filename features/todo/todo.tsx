@@ -20,10 +20,11 @@ function Todo() {
         return state.todos.todoList.data?.filter((todo) => !todo.completed);
     }
   });
-  console.log(todos);
+  const loading = useAppSelector((state) => state.todos.todoList.loading)
+ 
   return (
     <div>
-      <h1>Todos</h1>
+      <h1>Todos {loading && 'loading...'}</h1>
       <Filter show={TodoFilter.SHOW_ACTIVE} />
       <Filter show={TodoFilter.SHOW_COMPLETED} />
       <Filter show={TodoFilter.SHOW_ALL} />

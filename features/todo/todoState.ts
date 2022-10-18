@@ -22,7 +22,7 @@ export const todoState = createSlice({
     addTodo(action: PayloadAction<string>, put, getState) {
       console.log(action)
       const todos:Todo[]=getState().todos.todoList?.data??[];
-      put('todoList', todoPost(action.payload))
+      put('todoList', todoPost(action.payload).then(todo=>[todo, ...todos]))
     },
     removeTodo(action: PayloadAction<number>, put, getState) {
       const todos:Todo[]=getState().todos.todoList?.data??[];
